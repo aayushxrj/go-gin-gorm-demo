@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+
 	"github.com/aayushxrj/go-gin-gorm-demo/internal/config"
 	"github.com/aayushxrj/go-gin-gorm-demo/pkg/logger"
 	"github.com/gin-gonic/gin"
@@ -29,11 +31,19 @@ func main() {
 	}
 
 	// Create Gin router
-	
+	router := gin.New()
 
 	// Setup routes
 
 	// Start server
-	
+	addr := ":" + cfg.App.Port
+	logger.Info("Server starting", map[string]interface{}{
+		"port": cfg.App.Port,
+		"addr": addr,
+	})
+
+	if err := router.Run(addr); err != nil {
+		log.Fatalf("Failed to start server: %v", err)
+	}
 
 }
