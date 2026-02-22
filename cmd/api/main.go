@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/aayushxrj/go-gin-gorm-demo/internal/config"
+	"github.com/aayushxrj/go-gin-gorm-demo/pkg/logger"
 	"github.com/gin-gonic/gin"
 )
 
@@ -11,6 +12,12 @@ func main() {
 	cfg := config.Get()
 
 	// Initialize logger
+	logger := logger.New()
+	logger.Info("Starting application", map[string]interface{}{
+		"name":    cfg.App.Name,
+		"version": cfg.App.Version,
+		"env":     cfg.App.Env,
+	})
 
 	// Initialize database
 
@@ -22,9 +29,11 @@ func main() {
 	}
 
 	// Create Gin router
+	
 
 	// Setup routes
 
 	// Start server
+	
 
 }
